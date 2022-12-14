@@ -39,7 +39,9 @@ public class Manufacturers {
                 if(nextId<code)
                     nextId=code;
 
-                manufacturers.put(code, new Manufacturer(code, name, country));
+                Manufacturer newManufacturer = new Manufacturer(code, name, country);
+                manufacturers.put(code, newManufacturer);
+                System.out.println("\n\n" + newManufacturer.toString() + "\n\n");
 
 //                TEST DATA:
 //            manufacturers.put(123L, new Manufacturer(123L, "naziv", "SRB"));

@@ -26,6 +26,8 @@ public class Users {
         try {
             Path path = Paths.get(getClass().getClassLoader().getResource(USERS_FILE_NAME).toURI());
             System.out.println(path.toFile().getAbsolutePath());
+            System.out.println(path);
+            System.out.println(path.toFile());
             List<String> lines = Files.readAllLines(path, Charset.forName("UTF-8"));
 
             for (String line : lines) {
@@ -95,13 +97,15 @@ public class Users {
     private void saveToFile(User user) throws IOException, URISyntaxException {
         Path path = Paths.get(getClass().getClassLoader().getResource(USERS_FILE_NAME).toURI());
         System.out.println(path.toFile().getAbsolutePath());
+        System.out.println(path);
+        System.out.println(path.toFile());
 //        PrintWriter writer = new PrintWriter(new FileWriter(path));
         BufferedWriter writer = new BufferedWriter(new FileWriter(String.valueOf(path), true));
         String row;
         for (User u : users.values() ) {
             System.out.println("From file saver: " + u.toString());
 
-            row = u.getId()+";"+u.getUsername()+";"+u.getPassword()+";"+u.getEmail()+";"+u.getName()+";"+u.getSurname()+";"+new SimpleDateFormat("yyyy-MM-dd").format(u.getDateOfBirth())+";"+u.getAddress()+";"+u.getPhoneNum()+";"+new SimpleDateFormat("yyyy-MM-dd HH:mm").format(u.getRegistrationTimestamp())+";"+u.getRole().toString()+";\n";
+            row = u.getId()+";"+u.getUsername()+";"+u.getPassword()+";"+u.getEmail()+";"+u.getName()+";"+u.getSurname()+";"+new SimpleDateFormat("yyyy-MM-dd").format(u.getDateOfBirth()).toString()+";"+u.getAddress()+";"+u.getPhoneNum()+";"+new SimpleDateFormat("yyyy-MM-dd HH:mm").format(u.getRegistrationTimestamp()).toString()+";"+u.getRole().toString()+";\n";
 //            Files.write(path, row.getBytes());
             writer.append(row);
 //            writer.write(row);
