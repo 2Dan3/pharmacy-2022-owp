@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class User {
     private Long id;
-    private String username;
+    private String jmbg;
     private String password;
     private String email;
     private String name;
@@ -23,9 +23,9 @@ public class User {
 
     public User(){}
 
-    public User(Long id, String username, String password, String email, String name, String surname, Date dateOfBirth, String address, String phoneNum, Date registrationTimestamp, Role role){
+    public User(Long id, String jmbg, String password, String email, String name, String surname, Date dateOfBirth, String address, String phoneNum, Date registrationTimestamp, Role role){
         this.id = id;
-        this.username = username;
+        this.jmbg = jmbg;
         this.password = password;
         this.email = email;
         this.name = name;
@@ -38,9 +38,6 @@ public class User {
     }
 
     public User(CreateUserDTO u) throws ParseException {
-            this.username = u.getUsername();
-            this.password = u.getPassword();
-            this.email = u.getEmail();
             this.name = u.getName();
             this.surname = u.getSurname();
         System.out.println("\n\n"+u.getBirth()+"\n"+ new Date() +"\n\n");
@@ -49,7 +46,7 @@ public class User {
             this.phoneNum = u.getPhoneNum();
 
             this.registrationTimestamp = new Date();
-            this.role = Role.CUSTOMER;
+            this.role = Role.PATIENT;
     }
 
     public Long getId() {
@@ -60,12 +57,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getJmbg() { return jmbg;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setJmbg(String jmbg) {
+        this.jmbg = jmbg;
     }
 
     public String getPassword() {
@@ -144,7 +140,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", jmbg='" + jmbg + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +

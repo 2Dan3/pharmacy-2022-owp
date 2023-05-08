@@ -60,6 +60,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
             m.setName(manufacturerEdited.getName());
             m.setCountry(manufacturerEdited.getCountry());
 //            m.setCode(manufacturerEdited.getCode());
+//            manufacturers.delete(m.getCode());
             manufacturers.saveToFile(m);
         }
 

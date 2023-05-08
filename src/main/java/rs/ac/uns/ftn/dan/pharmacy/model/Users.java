@@ -105,7 +105,7 @@ public class Users {
         for (User u : users.values() ) {
             System.out.println("From file saver: " + u.toString());
 
-            row = u.getId()+";"+u.getUsername()+";"+u.getPassword()+";"+u.getEmail()+";"+u.getName()+";"+u.getSurname()+";"+new SimpleDateFormat("yyyy-MM-dd").format(u.getDateOfBirth()).toString()+";"+u.getAddress()+";"+u.getPhoneNum()+";"+new SimpleDateFormat("yyyy-MM-dd HH:mm").format(u.getRegistrationTimestamp()).toString()+";"+u.getRole().toString()+";\n";
+            row = u.getId()+";"+u.getJmbg()+";"+u.getPassword()+";"+u.getEmail()+";"+u.getName()+";"+u.getSurname()+";"+new SimpleDateFormat("yyyy-MM-dd").format(u.getDateOfBirth()).toString()+";"+u.getAddress()+";"+u.getPhoneNum()+";"+new SimpleDateFormat("yyyy-MM-dd HH:mm").format(u.getRegistrationTimestamp()).toString()+";"+u.getRole().toString()+";\n";
 //            Files.write(path, row.getBytes());
             writer.append(row);
 //            writer.write(row);
