@@ -6,11 +6,22 @@ public class Vaccine {
     private int amountAvailable;
     private Manufacturer manufacturer;
 
-    public Vaccine() {}
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Vaccine() {
+
+    }
 
 
-    public Vaccine(Long id, int amountAvailable, Manufacturer manufacturer) {
+    public Vaccine(Long id, String name, int amountAvailable, Manufacturer manufacturer) {
         this.id = id;
+        this.name = name;
         this.amountAvailable = amountAvailable;
         this.manufacturer = manufacturer;
     }

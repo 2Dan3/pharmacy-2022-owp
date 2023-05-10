@@ -362,4 +362,20 @@ public class UserController {
 //        return;
 //    }
 
+    @GetMapping("/login")
+    public void getLoginForm(HttpServletResponse response){
+
+    }
+    @PostMapping("/login")
+    public void login(HttpServletResponse response){
+
+    }
+    @PostMapping("/logout")
+    public void logout(HttpServletResponse response){
+
+    }
+    @GetMapping("/profile")
+    public void getProfilePage(HttpServletResponse response){
+
+    }
 }

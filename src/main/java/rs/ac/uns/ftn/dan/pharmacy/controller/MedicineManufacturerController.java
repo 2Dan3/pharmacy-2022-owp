@@ -56,7 +56,7 @@ public class MedicineManufacturerController {
 
     @GetMapping
     @ResponseBody
-    public void index(HttpServletResponse response) throws IOException {
+    public void getManufacturers(HttpServletResponse response) throws IOException {
 
         PrintWriter out = response.getWriter();
 
