@@ -1,11 +1,10 @@
 package rs.ac.uns.ftn.dan.pharmacy.service;
 
 import org.springframework.context.ApplicationContextAware;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturer;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ManufacturerService extends ApplicationContextAware {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SecondConfiguration {
 
-    @Bean(name= {"memorijaAplikacije"},
+    @Bean(name= {"appMemory"},
             initMethod="init", destroyMethod="destroy")
     public ApplicationMemory getApplicationMemory() {
         return new ApplicationMemory();

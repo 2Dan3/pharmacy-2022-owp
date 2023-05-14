@@ -5,16 +5,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturer;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturers;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
 import rs.ac.uns.ftn.dan.pharmacy.service.ManufacturerService;
 
 import javax.annotation.PostConstruct;

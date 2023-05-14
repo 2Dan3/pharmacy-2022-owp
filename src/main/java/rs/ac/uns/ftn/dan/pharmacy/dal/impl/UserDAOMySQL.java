@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import rs.ac.uns.ftn.dan.pharmacy.dal.UserDAO;
-import rs.ac.uns.ftn.dan.pharmacy.model.User;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.User;
 
 import org.springframework.jdbc.core.RowMapper;
 import rs.ac.uns.ftn.dan.pharmacy.model.enums.Role;
@@ -67,6 +67,17 @@ public class UserDAOMySQL implements UserDAO {
     }
 
     @Override
+    public User findByEmail(String email) {
+        try {
+            String query = "SELECT id, jmbg, password, email, name, surname, birth_date, address, phone, reg_timestamp, role FROM users WHERE email = ?";
+            return jdbcTemplate.queryForObject(query, new UserRowMapper(), email);
+        } catch (EmptyResultDataAccessException ex) {
+            // in case user not found
+            return null;
+        }
+    }
+
+    @Override
     public List<User> findAll() {
         String query = "SELECT id, jmbg, password, email, name, surname, birth_date, address, phone, reg_timestamp, role FROM users";
         return jdbcTemplate.query(query, new UserRowMapper());
@@ -89,4 +100,5 @@ public class UserDAOMySQL implements UserDAO {
         String query = "DELETE FROM users WHERE id = ?";
         return jdbcTemplate.update(query, id);
     }
+
 }

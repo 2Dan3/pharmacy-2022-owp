@@ -1,12 +1,10 @@
-package rs.ac.uns.ftn.dan.pharmacy.model;
+package rs.ac.uns.ftn.dan.pharmacy.model.entity;
 
-import org.springframework.format.datetime.DateFormatter;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateUserDTO;
 import rs.ac.uns.ftn.dan.pharmacy.model.enums.Role;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class User {

@@ -1,7 +1,7 @@
 package rs.ac.uns.ftn.dan.pharmacy.service;
 
-import rs.ac.uns.ftn.dan.pharmacy.model.CreateUserDTO;
-import rs.ac.uns.ftn.dan.pharmacy.model.User;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateUserDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.User;
 
 import java.util.List;
 
@@ -12,4 +12,6 @@ public interface UserService{
     int save(CreateUserDTO userDTO);
     int update(User existingUser);
     int delete(Long id);
+
+    User findByEmail(String email);
 }

@@ -3,8 +3,8 @@ package rs.ac.uns.ftn.dan.pharmacy.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.dan.pharmacy.dal.UserDAO;
-import rs.ac.uns.ftn.dan.pharmacy.model.CreateUserDTO;
-import rs.ac.uns.ftn.dan.pharmacy.model.User;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateUserDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.User;
 import rs.ac.uns.ftn.dan.pharmacy.service.UserService;
 
 import java.util.List;
@@ -26,6 +26,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+    @Override
     public List<User> findAll() {
         return userDAO.findAll();
     }
@@ -45,4 +49,5 @@ public class UserServiceImpl implements UserService {
     public int delete(Long id) {
         return userDAO.delete(id);
     }
+
 }

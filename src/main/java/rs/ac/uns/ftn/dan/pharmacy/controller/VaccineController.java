@@ -7,7 +7,6 @@ import org.jsoup.parser.Tag;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;

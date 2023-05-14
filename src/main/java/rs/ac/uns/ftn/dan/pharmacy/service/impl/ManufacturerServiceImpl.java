@@ -6,14 +6,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
 import rs.ac.uns.ftn.dan.pharmacy.controller.MedicineManufacturerController;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturer;
-import rs.ac.uns.ftn.dan.pharmacy.model.Manufacturers;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
 import rs.ac.uns.ftn.dan.pharmacy.service.ManufacturerService;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -2,34 +2,28 @@ package rs.ac.uns.ftn.dan.pharmacy.controller;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.parser.Tag;
-import rs.ac.uns.ftn.dan.pharmacy.model.CreateUserDTO;
-import rs.ac.uns.ftn.dan.pharmacy.model.User;
+import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.AuthRequest;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateUserDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.User;
 import rs.ac.uns.ftn.dan.pharmacy.service.UserService;
 
 @Controller
 @RequestMapping(value = "/users")
 public class UserController {
 
-    public static final String USERS_KEY = "users";
+    public static final String LOGGED_USER_KEY = "logged_user";
 
     @Autowired
     UserService userService;
@@ -38,16 +32,8 @@ public class UserController {
     private ServletContext servletContext;
     private String bURL;
 
-//    @Autowired
-//    private ApplicationContext applicationContext;
-
-//    @Autowired
-//    private SecondConfiguration.ApplicationMemory appMemory;
-
-//    @Override
-//    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-//        this.applicationContext = applicationContext;
-//    }
+    @Autowired
+    private SecondConfiguration.ApplicationMemory appMemory;
 
     @PostConstruct
     public void init() {
@@ -157,7 +143,7 @@ public class UserController {
 
         userService.save(userDTO);
 
-        response.sendRedirect(bURL + "/users/login");
+        response.sendRedirect(bURL + "users/login");
     }
 
 //    @PostMapping(value="/edit")
@@ -325,8 +311,18 @@ public class UserController {
         return;
     }
     @PostMapping("/login")
-    public void login(HttpServletResponse response){
-
+    public void login(@ModelAttribute AuthRequest authRequest, HttpServletResponse response) throws IOException {
+        User foundUser;
+        if ( (foundUser = userService.findByEmail(authRequest.getEmail()) ) == null) {
+            response.setStatus(404);
+//            todo delete line below
+            response.getWriter().write("Invalid credentials!");
+            response.sendRedirect(bURL + "users/login");
+        }
+        else {
+            appMemory.put(LOGGED_USER_KEY, foundUser);
+            response.sendRedirect(bURL + "news");
+        }
     }
     @PostMapping("/logout")
     public void logout(HttpServletResponse response){

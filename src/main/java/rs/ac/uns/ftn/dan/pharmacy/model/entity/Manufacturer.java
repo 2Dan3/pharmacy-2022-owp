@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.dan.pharmacy.model;
+package rs.ac.uns.ftn.dan.pharmacy.model.entity;
 
 public class Manufacturer {
     private Long code;

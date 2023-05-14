@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.dan.pharmacy.model;
+package rs.ac.uns.ftn.dan.pharmacy.model.dto;
 
 
 import java.sql.Date;
