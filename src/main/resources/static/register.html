@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="forms.css">
+    <title>Register an account</title>
+</head>
+<body>
+    <!-- TODO form action? -->
+    <div class="form-wrapper">
+        <form method="post" action="users/register">
+            <input name="name" id="nameRegister" class="formEl formField" placeholder="First name" type="text"/>
+            <input name="surname" id="surnameRegister" class="formEl formField" placeholder="Last name" type="text"/>
+            
+            <input name="jmbg" id="jmbgRegister" class="formEl formField" placeholder="JMBG" type="number" minlength="13" maxlength="13"/>
+            <input name="address" id="addressRegister" class="formEl formField" placeholder="Your address" type="text"/>
+            <input name="phoneNum" id="phoneRegister" class="formEl formField" placeholder="Phone Num." type="tel"/>
+            <input name="birthDate" id="birthDateRegister" class="formEl formField" placeholder="Date of birth" type="date"/>
+
+            <input name="email" id="usernameRegister" class="formEl formField" placeholder="Email" type="email"/>
+            <input name="password" id="passwordRegister" class="formEl formField" placeholder="Password" type="password"/>
+            <button type="submit" class="formEl formBtn">Register</button>
+            <div id="to-log-page">
+                <p>Already have an account?</p>
+                <button onclick="users/login">To sign-in page</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

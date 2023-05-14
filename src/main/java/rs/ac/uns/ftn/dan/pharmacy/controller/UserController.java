@@ -23,7 +23,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
 import rs.ac.uns.ftn.dan.pharmacy.model.CreateUserDTO;
 import rs.ac.uns.ftn.dan.pharmacy.model.User;
-import rs.ac.uns.ftn.dan.pharmacy.model.Users;
 import rs.ac.uns.ftn.dan.pharmacy.service.UserService;
 
 @Controller
@@ -148,60 +147,17 @@ public class UserController {
     @GetMapping(value="/register")
     @ResponseBody
     public void registerForm(HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        File htmlFile = new ClassPathResource("static/template.html").getFile();
-        Document doc = Jsoup.parse(htmlFile, "UTF-8");
-        Element body = doc.select("body").first();
-
-//        HEADER
-        Element ulTag = new Element(Tag.valueOf("ul"), "");
-
-        Element liTagManufacturers = new Element(Tag.valueOf("li"), "");
-        Element aTagManufacturers = new Element(Tag.valueOf("a"), "").attr("href", servletContext.getContextPath() + "/manufacturers").text("Manufacturers");
-        liTagManufacturers.appendChild(aTagManufacturers);
-        ulTag.appendChild(liTagManufacturers);
-
-        body.appendChild(ulTag);
-
-//        SIGNUP FORM
-
-        Element formh2 = new Element(Tag.valueOf("h2"), "").text("SIGN UP:");
-        Element form = new Element(Tag.valueOf("form"), "").attr("method", "post").attr("action", "register");
-        Element inputUsername = new Element(Tag.valueOf("input"), "").attr("type", "text").attr("name", "username").attr("minLength", "3").attr("placeholder", "Username").attr("required", "true");
-        Element inputPassword = new Element(Tag.valueOf("input"), "").attr("type", "password").attr("name", "password").attr("minLength", "8").attr("placeholder", "Password (8+ characters)").attr("required", "true");
-        Element inputEmail = new Element(Tag.valueOf("input"), "").attr("type", "email").attr("name", "email").attr("placeholder", "Email").attr("required", "true");
-
-        Element inputName = new Element(Tag.valueOf("input"), "").attr("type", "text").attr("name", "name").attr("placeholder", "Name").attr("required", "true");
-        Element inputSurname = new Element(Tag.valueOf("input"), "").attr("type", "text").attr("name", "surname").attr("placeholder", "Surname").attr("required", "true");
-        Element inputBirth = new Element(Tag.valueOf("input"), "").attr("type", "date").attr("name", "birth").attr("placeholder", "Date of birth").attr("required", "true");
-        Element inputAddress = new Element(Tag.valueOf("input"), "").attr("type", "text").attr("name", "address").attr("placeholder", "Address").attr("required", "true");
-        Element inputPhone = new Element(Tag.valueOf("input"), "").attr("type", "tel").attr("name", "phoneNum").attr("minLength", "6").attr("placeholder", "Phone Number").attr("required", "true");
-
-        Element inputSubmit = new Element(Tag.valueOf("input"), "").attr("type", "submit").attr("value", "Sign up!");
-
-        form.appendChild(inputUsername);
-        form.appendChild(inputPassword);
-        form.appendChild(inputEmail);
-        form.appendChild(inputName);
-        form.appendChild(inputSurname);
-        form.appendChild(inputBirth);
-        form.appendChild(inputAddress);
-        form.appendChild(inputPhone);
-        form.appendChild(inputSubmit);
-
-        body.appendChild(formh2);
-        body.appendChild(form);
-
-        out.write(doc.html());
+        Document doc = Jsoup.parse(new ClassPathResource("static/register.html").getFile(), "UTF-8");
+        response.getWriter().write(doc.html());
         return;
     }
 
     @PostMapping(value="/register")
-    public void register(@ModelAttribute CreateUserDTO userDTO, HttpServletResponse response) throws IOException, ParseException {
-//
+    public void register(@ModelAttribute CreateUserDTO userDTO, HttpServletResponse response) throws IOException {
+
         userService.save(userDTO);
 
-        response.sendRedirect(bURL + "manufacturers");
+        response.sendRedirect(bURL + "/users/login");
     }
 
 //    @PostMapping(value="/edit")
@@ -363,8 +319,10 @@ public class UserController {
 //    }
 
     @GetMapping("/login")
-    public void getLoginForm(HttpServletResponse response){
-
+    public void getLoginForm(HttpServletResponse response) throws IOException {
+        Document doc = Jsoup.parse(new ClassPathResource("static/login.html").getFile(), "UTF-8");
+        response.getWriter().write(doc.html());
+        return;
     }
     @PostMapping("/login")
     public void login(HttpServletResponse response){

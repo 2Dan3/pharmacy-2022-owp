@@ -1,17 +1,16 @@
 package rs.ac.uns.ftn.dan.pharmacy.model;
 
-import rs.ac.uns.ftn.dan.pharmacy.model.enums.Role;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CreateUserDTO {
 //    private Long id;
-    private String username;
+    private String jmbg;
     private String password;
     private String email;
     private String name;
     private String surname;
-    private String birth;
+    private Date birthDate;
     private String address;
     private String phoneNum;
 
@@ -29,23 +28,23 @@ public class CreateUserDTO {
 //        this.phoneNum = phoneNum;
 //    }
 
-    public CreateUserDTO(String username, String password, String email, String name, String surname, String birth, String address, String phoneNum){
-        this.username = username;
+    public CreateUserDTO(String jmbg, String password, String email, String name, String surname, Date birthDate, String address, String phoneNum){
+        this.jmbg = jmbg;
         this.password = password;
         this.email = email;
         this.name = name;
         this.surname = surname;
-        this.birth = birth;
+        this.birthDate = birthDate;
         this.address = address;
         this.phoneNum = phoneNum;
     }
 
-    public String getUsername() {
-        return username;
+    public String getJmbg() {
+        return jmbg;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setJmbg(String jmbg) {
+        this.jmbg = jmbg;
     }
 
     public String getPassword() {
@@ -80,12 +79,12 @@ public class CreateUserDTO {
         this.surname = surname;
     }
 
-    public String getBirth() {
-        return birth;
+    public Date getBirth() {
+        return birthDate;
     }
 
     public void setBirth(String birth) {
-        this.birth = birth;
+        this.birthDate = birthDate;
     }
 
     public String getAddress() {

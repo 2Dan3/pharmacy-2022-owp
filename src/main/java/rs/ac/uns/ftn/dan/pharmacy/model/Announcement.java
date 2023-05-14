@@ -1,12 +1,12 @@
 package rs.ac.uns.ftn.dan.pharmacy.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Announcement {
     private Long id;
     private String name;
     private String content;
-    private Date timestamp;
+    private Timestamp timestamp;
 
     public Long getId() {
         return id;
@@ -32,15 +32,15 @@ public class Announcement {
         this.content = content;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
-    public Announcement(Long id, String name, String content, Date timestamp) {
+    public Announcement(Long id, String name, String content, Timestamp timestamp) {
         this.id = id;
         this.name = name;
         this.content = content;

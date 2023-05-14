@@ -1,6 +1,6 @@
 package rs.ac.uns.ftn.dan.pharmacy.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class VirusReport {
     private Long id;
@@ -9,9 +9,9 @@ public class VirusReport {
     private int sickInTotal;
     private int hospitalized;
     private int onRespirators;
-    private Date timestamp;
+    private Timestamp timestamp;
 
-    public VirusReport(Long id, int sickInLast24h, int testedInLast24h, int sickInTotal, int hospitalized, int onRespirators, Date timestamp) {
+    public VirusReport(Long id, int sickInLast24h, int testedInLast24h, int sickInTotal, int hospitalized, int onRespirators, Timestamp timestamp) {
         this.id = id;
         this.sickInLast24h = sickInLast24h;
         this.testedInLast24h = testedInLast24h;
@@ -72,11 +72,11 @@ public class VirusReport {
         this.onRespirators = onRespirators;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 }

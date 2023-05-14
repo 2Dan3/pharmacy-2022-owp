@@ -1,0 +1,30 @@
+.form-wrapper{
+    align-items: center;
+    text-align: center;
+    margin: auto auto;
+    width: fit-content;
+}
+form{
+    width: fit-content;
+}
+.formEl{
+    display: block;
+    margin: 20pt auto;
+    font-weight: bold;
+    font-size: large;
+    min-width: 100%;
+    width: fit-content;
+}
+form button{
+    margin-bottom: 10pt;
+    background-color: blue;
+    color: whitesmoke;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#to-reg-page, #to-log-page{
+    border-top: 2px ridge blue;
+    margin: auto;
+    font-weight: bold;
+    font-size: large;
+}

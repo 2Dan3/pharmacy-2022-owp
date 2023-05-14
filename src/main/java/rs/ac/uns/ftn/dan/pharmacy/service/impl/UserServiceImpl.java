@@ -1,44 +1,48 @@
 package rs.ac.uns.ftn.dan.pharmacy.service.impl;
 
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
-import rs.ac.uns.ftn.dan.pharmacy.controller.UserController;
+import rs.ac.uns.ftn.dan.pharmacy.dal.UserDAO;
 import rs.ac.uns.ftn.dan.pharmacy.model.CreateUserDTO;
 import rs.ac.uns.ftn.dan.pharmacy.model.User;
-import rs.ac.uns.ftn.dan.pharmacy.model.Users;
 import rs.ac.uns.ftn.dan.pharmacy.service.UserService;
 
-import javax.annotation.PostConstruct;
-import java.text.ParseException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private SecondConfiguration.ApplicationMemory appMemory;
-
-    @Autowired ApplicationContext applicationContext;
+    private UserDAO userDAO;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
-    @PostConstruct
-    public void init(){
-        appMemory = applicationContext.getBean(SecondConfiguration.ApplicationMemory.class);
-        Users users = new Users();
-        appMemory.put(UserController.USERS_KEY, users);
+    public User findOne(String jmbg) {
+        return userDAO.findOne(jmbg);
     }
 
     @Override
-    public void save(CreateUserDTO userDTO) throws ParseException {
-        Users users = (Users) appMemory.get(UserController.USERS_KEY);
+    public User findOne(Long id) {
+        return userDAO.findOne(id);
+    }
 
-        User user = new User(userDTO);
-        user = users.save(user);
+    @Override
+    public List<User> findAll() {
+        return userDAO.findAll();
+    }
+
+    @Override
+    public int save(CreateUserDTO userDTO) {
+        User newUser = new User(userDTO);
+        return userDAO.save(newUser);
+    }
+
+    @Override
+    public int update(User existingUser) {
+        return userDAO.update(existingUser);
+    }
+
+    @Override
+    public int delete(Long id) {
+        return userDAO.delete(id);
     }
 }

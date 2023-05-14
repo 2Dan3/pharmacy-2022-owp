@@ -1,10 +1,10 @@
 package rs.ac.uns.ftn.dan.pharmacy.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class VaccinationSignup {
     private Long id;
-    private Date timestamp;
+    private Timestamp timestamp;
     private User requester;
     private Vaccine chosenVaccine;
     private int doseNum;
@@ -21,11 +21,11 @@ public class VaccinationSignup {
         this.id = id;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -61,7 +61,7 @@ public class VaccinationSignup {
         this.vaccineTaken = vaccineTaken;
     }
 
-    public VaccinationSignup(Long id, Date timestamp, User requester, Vaccine chosenVaccine, int doseNum, boolean vaccineTaken) {
+    public VaccinationSignup(Long id, Timestamp timestamp, User requester, Vaccine chosenVaccine, int doseNum, boolean vaccineTaken) {
         this.id = id;
         this.timestamp = timestamp;
         this.requester = requester;

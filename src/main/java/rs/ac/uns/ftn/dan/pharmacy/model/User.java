@@ -3,10 +3,11 @@ package rs.ac.uns.ftn.dan.pharmacy.model;
 import org.springframework.format.datetime.DateFormatter;
 import rs.ac.uns.ftn.dan.pharmacy.model.enums.Role;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class User {
     private Long id;
@@ -18,12 +19,25 @@ public class User {
     private Date dateOfBirth;
     private String address;
     private String phoneNum;
-    private Date registrationTimestamp;
+    private Timestamp registrationTimestamp;
     private Role role;
+
+    private static final SimpleDateFormat dateFormatDefault = new SimpleDateFormat("MM-dd-yyyy HH:mm");
 
     public User(){}
 
-    public User(Long id, String jmbg, String password, String email, String name, String surname, Date dateOfBirth, String address, String phoneNum, Date registrationTimestamp, Role role){
+    public User(CreateUserDTO userDTO){
+        this.jmbg = userDTO.getJmbg();
+        this.password = userDTO.getPassword();
+        this.email = userDTO.getEmail();
+        this.name = userDTO.getName();
+        this.surname = userDTO.getSurname();
+        this.dateOfBirth = userDTO.getBirth();
+        this.address = userDTO.getAddress();
+        this.phoneNum = userDTO.getPhoneNum();
+        this.role = Role.PATIENT;
+    }
+    public User(Long id, String jmbg, String password, String email, String name, String surname, Date dateOfBirth, String address, String phoneNum, Timestamp registrationTimestamp, Role role){
         this.id = id;
         this.jmbg = jmbg;
         this.password = password;
@@ -36,18 +50,31 @@ public class User {
         this.registrationTimestamp = registrationTimestamp;
         this.role = role;
     }
-
-    public User(CreateUserDTO u) throws ParseException {
-            this.name = u.getName();
-            this.surname = u.getSurname();
-        System.out.println("\n\n"+u.getBirth()+"\n"+ new Date() +"\n\n");
-            this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(u.getBirth());
-            this.address = u.getAddress();
-            this.phoneNum = u.getPhoneNum();
-
-            this.registrationTimestamp = new Date();
-            this.role = Role.PATIENT;
+    public User(String jmbg, String password, String email, String name, String surname, Date dateOfBirth, String address, String phoneNum){
+        this.jmbg = jmbg;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.phoneNum = phoneNum;
+        this.registrationTimestamp = new Timestamp(System.currentTimeMillis());
+        this.role = Role.PATIENT;
     }
+
+//    TODO * check Date Formatting *
+//    public User(CreateUserDTO u) throws ParseException {
+//            this.name = u.getName();
+//            this.surname = u.getSurname();
+//        System.out.println("\n\n"+u.getBirth()+"\n"+ new Date() +"\n\n");
+//            this.dateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(u.getBirth());
+//            this.address = u.getAddress();
+//            this.phoneNum = u.getPhoneNum();
+//
+//            this.registrationTimestamp = new Date();
+//            this.role = Role.PATIENT;
+//    }
 
     public Long getId() {
         return id;
@@ -120,11 +147,11 @@ public class User {
         this.phoneNum = phoneNum;
     }
 
-    public Date getRegistrationTimestamp() {
+    public Timestamp getRegistrationTimestamp() {
         return registrationTimestamp;
     }
 
-    public void setRegistrationTimestamp(Date registrationTimestamp) {
+    public void setRegistrationTimestamp(Timestamp registrationTimestamp) {
         this.registrationTimestamp = registrationTimestamp;
     }
 
