@@ -7,6 +7,8 @@ import org.jsoup.parser.Tag;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.VaccinationSignupDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.VaccineFilterDTO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -28,20 +30,10 @@ public class VaccineController {
 
     @GetMapping
     @ResponseBody
-    public void getAllVaccines(HttpServletResponse response) {
+    public void getAllVaccines(@ModelAttribute VaccineFilterDTO vaccineFilter, HttpServletResponse response) {
 //        TODO
-//          list all vaccines & show a search form
+//          list all vaccines that satisfy vaccineFilter & show a search form
 //
-    }
-    @GetMapping(name = "/search")
-    @ResponseBody
-    public void getSearchedVaccines(@RequestParam String vaccineName, @RequestParam String makerName,
-                                    @RequestParam String makerCountry, @RequestParam int amountMin,
-                                    @RequestParam int amountMax, @RequestParam boolean sortDesc,
-                                    HttpServletResponse response) {
-//        TODO
-//          list searched vaccines & the search form
-//          sort vaccines
     }
 
     @GetMapping(value = "/details")
@@ -81,7 +73,7 @@ public class VaccineController {
     }
 
     @PostMapping(name = "/")
-    public void signUpForVaccination(@RequestParam String vaccineName, @RequestParam int doseNum,
+    public void signUpForVaccination(@RequestBody VaccinationSignupDTO vaccinationSignup,
                                      HttpServletResponse response) {
 
     }
