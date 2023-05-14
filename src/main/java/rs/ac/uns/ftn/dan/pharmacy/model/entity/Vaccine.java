@@ -1,7 +1,5 @@
 package rs.ac.uns.ftn.dan.pharmacy.model.entity;
 
-import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
-
 public class Vaccine {
     private Long id;
     private String name;

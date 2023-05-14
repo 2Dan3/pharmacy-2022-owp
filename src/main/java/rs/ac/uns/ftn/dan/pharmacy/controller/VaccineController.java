@@ -4,17 +4,21 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.dan.pharmacy.model.dto.VaccinationSignupDTO;
 import rs.ac.uns.ftn.dan.pharmacy.model.dto.VaccineFilterDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.entity.Vaccine;
+import rs.ac.uns.ftn.dan.pharmacy.service.VaccineSvc;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @RequestMapping(name = "/vaccines")
@@ -22,18 +26,34 @@ public class VaccineController {
 
     public static final String VACCINES_KEY = "vaccines";
 
+    @Autowired
     private ServletContext servletContext;
-    private String bURL;
+//    private String bURL;
 
-//    @Autowired
-//    private VaccineService vaccineService;
+    @Autowired
+    private VaccineSvc vaccineSvc;
 
     @GetMapping
     @ResponseBody
-    public void getAllVaccines(@ModelAttribute VaccineFilterDTO vaccineFilter, HttpServletResponse response) {
+    public void getAllVaccines(@ModelAttribute VaccineFilterDTO vaccineFilter, HttpServletResponse response) throws IOException {
+//
+        List<Vaccine> foundVaccines = vaccineSvc.findAll(vaccineFilter);
+
+        Document doc = Jsoup.parse(new ClassPathResource("static/vaccines.html").getFile(), "UTF-8");
+
 //        TODO
 //          list all vaccines that satisfy vaccineFilter & show a search form
-//
+//        ...
+        Element body = doc.select("body").first();
+        Element vaccWrapper = doc.select("#vaccines-wrapper").first();
+
+
+
+        createVaccineCards(foundVaccines, vaccWrapper);
+//        ...
+
+        response.getWriter().write(doc.html());
+        return;
     }
 
     @GetMapping(value = "/details")
@@ -47,7 +67,7 @@ public class VaccineController {
 
         PrintWriter out = response.getWriter();
 
-        File htmlFile = new ClassPathResource("static/template.html").getFile();
+        File htmlFile = new ClassPathResource("static/vaccine.html").getFile();
         Document doc = Jsoup.parse(htmlFile, "UTF-8");
 //
         Element body = doc.select("body").first();
@@ -96,6 +116,12 @@ public class VaccineController {
                                    @RequestParam String makerName, @RequestParam String makerCountry,
                                    HttpServletResponse response){
 
+    }
+    private void createVaccineCards(List<Vaccine> vaccines, Element container){
+        for (Vaccine v :
+                vaccines) {
+//               TODO create card & append it to its container
+        }
     }
 
 }

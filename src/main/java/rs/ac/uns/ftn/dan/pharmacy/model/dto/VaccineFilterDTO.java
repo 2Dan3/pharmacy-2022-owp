@@ -4,12 +4,12 @@ public class VaccineFilterDTO {
     private String country;
     private String makerName;
     private String vaccineName;
-    private int amountMin;
-    private int amountMax;
+    private Integer amountMin;
+    private Integer amountMax;
 
     public VaccineFilterDTO(){}
 
-    public VaccineFilterDTO(String country, String makerName, String vaccineName, int amountMin, int amountMax) {
+    public VaccineFilterDTO(String country, String makerName, String vaccineName, Integer amountMin, Integer amountMax) {
         this.country = country;
         this.makerName = makerName;
         this.vaccineName = vaccineName;
@@ -29,11 +29,11 @@ public class VaccineFilterDTO {
         return vaccineName;
     }
 
-    public int getAmountMin() {
+    public Integer getAmountMin() {
         return amountMin;
     }
 
-    public int getAmountMax() {
+    public Integer getAmountMax() {
         return amountMax;
     }
 }

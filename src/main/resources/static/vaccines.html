@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vaccines.css">
+    <title>Vaccines</title>
+</head>
+<body>
+    <div id="content-wrapper">
+
+        <div id="vaccines-wrapper">
+            <div class="vaccine-card">
+                <p class="vaccineName">Vaccine 1</p>
+                <p class="makerName">Maker 1</p>
+                <p class="country">USA</p>
+                <p class="availableAmount">77</p>
+                <button>Signup</button>
+            </div>
+            <div class="vaccine-card">
+                <p class="vaccineName">Vaccine 2</p>
+                <p class="makerName">Maker 2</p>
+                <p class="country">CHINA</p>
+                <p class="availableAmount">105</p>
+                <button>Signup</button>
+            </div>
+            <div class="vaccine-card">
+                <p class="vaccineName">Vaccine 2</p>
+                <p class="makerName">Maker 2</p>
+                <p class="country">CHINA</p>
+                <p class="availableAmount">105</p>
+                <button>Signup</button>
+            </div>
+            <div class="vaccine-card">
+                <p class="vaccineName">Vaccine 2</p>
+                <p class="makerName">Maker 2</p>
+                <p class="country">CHINA</p>
+                <p class="availableAmount">105</p>
+                <button>Signup</button>
+            </div>
+            <div class="vaccine-card">
+                <p class="vaccineName">Vaccine 2</p>
+                <p class="makerName">Maker 2</p>
+                <p class="country">CHINA</p>
+                <p class="availableAmount">105</p>
+                <button>Signup</button>
+            </div>
+            
+        </div>
+
+        <div id="search-vaccines-wrapper">
+            <form method="get" action="/vaccines" id="vaccine-search-form">
+                <label for="searchCountry">Country</label>
+                <input type="text" id="searchCountry" name="country"/>
+                <label for="searchMakerName">Manufacturer</label>
+                <select name="makerName" id="searchMakerName">
+                    <option value=""></option>
+                    <option value="Maker1">Maker1</option>
+                    <option value="Maker2">Maker2</option>
+                </select>
+                <label for="searchVaccineName">Vaccine</label>
+                <select name="vaccineName" id="searchVaccineName">
+                    <option value=""></option>
+                    <option value="Vaccine1">Vaccine1</option>
+                    <option value="Vaccine2">Vaccine2</option>
+                </select>
+                <label for="amountMin">Amount available (min)</label>
+                <input type="number" name="amountMin" id="amountMin" min="0"/>
+                <label for="amountMax">Amount available (max)</label>
+                <input type="number" name="amountMax" id="amountMax" min="0"/>
+
+                <button id="btn-search-vaccines" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</html>

@@ -9,13 +9,13 @@ import java.util.List;
 
 public interface ManufacturerService extends ApplicationContextAware {
 
-    List<Manufacturer> findAll();
-
-    Manufacturer save(Manufacturer manufacturer);
-
-    void edit(Manufacturer manufacturerEdited) throws IOException, URISyntaxException;
-
-    void delete(Long code) throws IOException, URISyntaxException;
-
-    Manufacturer findOne(Long code);
+//    List<Manufacturer> findAll();
+//
+//    Manufacturer save(Manufacturer manufacturer);
+//
+//    void edit(Manufacturer manufacturerEdited) throws IOException, URISyntaxException;
+//
+//    void delete(Long code) throws IOException, URISyntaxException;
+//
+//    Manufacturer findOne(Long code);
 }

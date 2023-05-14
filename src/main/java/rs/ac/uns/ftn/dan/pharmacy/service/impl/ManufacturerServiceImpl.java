@@ -27,58 +27,58 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         this.applicationContext = applicationContext;
     }
 
-    @SuppressWarnings("unchecked")
-    @PostConstruct
-    public void init() {
-
-        appMemory = applicationContext.getBean(SecondConfiguration.ApplicationMemory.class);
-        Manufacturers manufacturers = new Manufacturers();
-
-        appMemory.put(ManufacturerController.MANUFACTURERS_KEY, manufacturers);
-    }
-
-    @Override
-    public List<Manufacturer> findAll() {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
-        return manufacturers.findAll();
-    }
-
-    @Override
-    public Manufacturer save(Manufacturer manufacturer) {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
-        return manufacturers.save(manufacturer);
-    }
-
-    @Override
-    public void edit(Manufacturer manufacturerEdited) throws IOException, URISyntaxException {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
-
-        Manufacturer m = manufacturers.findOne(manufacturerEdited.getCode());
-        if (m != null) {
-            m.setName(manufacturerEdited.getName());
-            m.setCountry(manufacturerEdited.getCountry());
-//            m.setCode(manufacturerEdited.getCode());
-//            manufacturers.delete(m.getCode());
-            manufacturers.saveToFile(m);
-        }
-
-    }
-
-    @Override
-    public void delete(Long code) throws IOException, URISyntaxException {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
-
-        if (manufacturers.findOne(code) != null) {
-            manufacturers.delete(code);
-        }
-    }
-
-    @Override
-    public Manufacturer findOne(Long code) {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
-
-        return manufacturers.findOne(code);
-    }
+//    @SuppressWarnings("unchecked")
+//    @PostConstruct
+//    public void init() {
+//
+//        appMemory = applicationContext.getBean(SecondConfiguration.ApplicationMemory.class);
+//        Manufacturers manufacturers = new Manufacturers();
+//
+//        appMemory.put(ManufacturerController.MANUFACTURERS_KEY, manufacturers);
+//    }
+//
+//    @Override
+//    public List<Manufacturer> findAll() {
+//        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
+//        return manufacturers.findAll();
+//    }
+//
+//    @Override
+//    public Manufacturer save(Manufacturer manufacturer) {
+//        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
+//        return manufacturers.save(manufacturer);
+//    }
+//
+//    @Override
+//    public void edit(Manufacturer manufacturerEdited) throws IOException, URISyntaxException {
+//        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
+//
+//        Manufacturer m = manufacturers.findOne(manufacturerEdited.getCode());
+//        if (m != null) {
+//            m.setName(manufacturerEdited.getName());
+//            m.setCountry(manufacturerEdited.getCountry());
+////            m.setCode(manufacturerEdited.getCode());
+////            manufacturers.delete(m.getCode());
+//            manufacturers.saveToFile(m);
+//        }
+//
+//    }
+//
+//    @Override
+//    public void delete(Long code) throws IOException, URISyntaxException {
+//        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
+//
+//        if (manufacturers.findOne(code) != null) {
+//            manufacturers.delete(code);
+//        }
+//    }
+//
+//    @Override
+//    public Manufacturer findOne(Long code) {
+//        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
+//
+//        return manufacturers.findOne(code);
+//    }
 
 
 }
