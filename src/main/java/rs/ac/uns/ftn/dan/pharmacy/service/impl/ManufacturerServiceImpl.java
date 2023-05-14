@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.dan.pharmacy.bean.SecondConfiguration;
-import rs.ac.uns.ftn.dan.pharmacy.controller.MedicineManufacturerController;
+import rs.ac.uns.ftn.dan.pharmacy.controller.ManufacturerController;
 import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
 import rs.ac.uns.ftn.dan.pharmacy.service.ManufacturerService;
 
@@ -34,24 +34,24 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         appMemory = applicationContext.getBean(SecondConfiguration.ApplicationMemory.class);
         Manufacturers manufacturers = new Manufacturers();
 
-        appMemory.put(MedicineManufacturerController.MANUFACTURERS_KEY, manufacturers);
+        appMemory.put(ManufacturerController.MANUFACTURERS_KEY, manufacturers);
     }
 
     @Override
     public List<Manufacturer> findAll() {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(MedicineManufacturerController.MANUFACTURERS_KEY);
+        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
         return manufacturers.findAll();
     }
 
     @Override
     public Manufacturer save(Manufacturer manufacturer) {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(MedicineManufacturerController.MANUFACTURERS_KEY);
+        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
         return manufacturers.save(manufacturer);
     }
 
     @Override
     public void edit(Manufacturer manufacturerEdited) throws IOException, URISyntaxException {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(MedicineManufacturerController.MANUFACTURERS_KEY);
+        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
 
         Manufacturer m = manufacturers.findOne(manufacturerEdited.getCode());
         if (m != null) {
@@ -66,7 +66,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public void delete(Long code) throws IOException, URISyntaxException {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(MedicineManufacturerController.MANUFACTURERS_KEY);
+        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
 
         if (manufacturers.findOne(code) != null) {
             manufacturers.delete(code);
@@ -75,7 +75,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
     @Override
     public Manufacturer findOne(Long code) {
-        Manufacturers manufacturers = (Manufacturers) appMemory.get(MedicineManufacturerController.MANUFACTURERS_KEY);
+        Manufacturers manufacturers = (Manufacturers) appMemory.get(ManufacturerController.MANUFACTURERS_KEY);
 
         return manufacturers.findOne(code);
     }

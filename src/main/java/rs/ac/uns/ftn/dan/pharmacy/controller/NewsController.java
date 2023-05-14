@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateNewsDTO;
+import rs.ac.uns.ftn.dan.pharmacy.model.dto.CreateVirusReportDTO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
@@ -43,15 +45,11 @@ public class NewsController {
 
     }
     @PostMapping(name = "")
-    public void postNews(@RequestParam String name, @RequestParam String content, HttpServletResponse response){
+    public void postNews(@RequestBody CreateNewsDTO newsDTO, HttpServletResponse response){
 
     }
     @PostMapping(name = "/reports")
-    public void postVirusReport(@RequestParam int sick,
-                                @RequestParam int tested,
-                                @RequestParam int sickTotal,
-                                @RequestParam int hospitalized,
-                                @RequestParam int onRespirators, HttpServletResponse response){
+    public void postVirusReport(@RequestBody CreateVirusReportDTO virusReportDTO, HttpServletResponse response){
 
     }
 }

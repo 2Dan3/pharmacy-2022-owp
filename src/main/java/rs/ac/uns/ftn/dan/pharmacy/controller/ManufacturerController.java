@@ -22,7 +22,7 @@ import java.net.URISyntaxException;
 
 @Controller
 @RequestMapping(value="/manufacturers")
-public class MedicineManufacturerController {
+public class ManufacturerController {
     public static final String MANUFACTURERS_KEY = "manufacturers";
 
     @Autowired

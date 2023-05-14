@@ -139,7 +139,7 @@ public class UserController {
     }
 
     @PostMapping(value="/register")
-    public void register(@ModelAttribute CreateUserDTO userDTO, HttpServletResponse response) throws IOException {
+    public void register(@RequestBody CreateUserDTO userDTO, HttpServletResponse response) throws IOException {
 
         userService.save(userDTO);
 
@@ -311,7 +311,7 @@ public class UserController {
         return;
     }
     @PostMapping("/login")
-    public void login(@ModelAttribute AuthRequest authRequest, HttpServletResponse response) throws IOException {
+    public void login(@RequestBody AuthRequest authRequest, HttpServletResponse response) throws IOException {
         User foundUser;
         if ( (foundUser = userService.findByEmail(authRequest.getEmail()) ) == null) {
             response.setStatus(404);
@@ -325,8 +325,9 @@ public class UserController {
         }
     }
     @PostMapping("/logout")
-    public void logout(HttpServletResponse response){
-
+    public void logout(HttpServletResponse response) throws IOException {
+        appMemory.remove(LOGGED_USER_KEY);
+        response.sendRedirect(bURL+"news");
     }
     @GetMapping("/profile")
     public void getProfilePage(HttpServletResponse response){
