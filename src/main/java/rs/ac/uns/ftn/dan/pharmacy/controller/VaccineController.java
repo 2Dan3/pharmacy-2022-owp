@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-@RequestMapping(name = "/vaccines")
+@RequestMapping(value = "/vaccines")
 public class VaccineController {
 
     public static final String VACCINES_KEY = "vaccines";
@@ -92,26 +92,26 @@ public class VaccineController {
         return;
     }
 
-    @PostMapping(name = "/")
+    @PostMapping(value = "/")
     public void signUpForVaccination(@RequestBody VaccinationSignupDTO vaccinationSignup,
                                      HttpServletResponse response) {
 
     }
-    @DeleteMapping(name = "/")
+    @DeleteMapping(value = "/")
     public void cancelOwnVaccinationRequest(@RequestParam Long vaccinationRequestId, HttpServletResponse response) {
 
     }
-    @GetMapping(name = "/signups")
+    @GetMapping(value = "/signups")
     public void getVaccinationSignups(@RequestParam String patientName, @RequestParam String patientSurname,
                                       @RequestParam String patientJmbg, HttpServletResponse response){
 
     }
-    @PutMapping(name = "/vaccinate")
+    @PutMapping(value = "/vaccinate")
     public void vaccinatePatient(@RequestParam Long patientId, @RequestParam int doseNumBeingGiven,
                                  @RequestParam String vaccineName,  HttpServletResponse response){
 
     }
-    @PutMapping(name = "/")
+    @PutMapping(value = "/")
     public void editVaccineDetails(@RequestParam Long vaccineId, @RequestParam String vaccineName,
                                    @RequestParam String makerName, @RequestParam String makerCountry,
                                    HttpServletResponse response){

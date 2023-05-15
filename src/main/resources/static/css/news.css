@@ -1,0 +1,21 @@
+body *::selection{
+    background-color: initial;
+}
+#virus-report-card, .news-card{
+    border: 2px ridge aquamarine;
+    background-color: antiquewhite;
+    font-size: large;
+    width: 70%;
+    height: fit-content;
+    margin: 10pt auto;
+}
+#virus-report-card{
+    border: 2px ridge orangered;
+}
+#virus-report-card p, .news-card p{
+    display: block;
+    margin: 12pt;
+}
+.timestamp, .title{
+    font-weight: bold;
+}

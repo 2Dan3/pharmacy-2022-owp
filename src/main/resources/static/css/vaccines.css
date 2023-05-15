@@ -1,0 +1,52 @@
+.unselectable{
+    background-color: initial;
+}
+#content-wrapper{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.vaccine-card{
+    border: 2px ridge aqua;
+    background-color: whitesmoke;
+    font-size: large;
+    width: 100%;
+    height: fit-content;
+    margin: 10pt auto;
+}
+button{
+    border: 2px ridge lightskyblue;
+    background-color: blue;
+    color: whitesmoke;
+    font-size: large;
+    margin: 5pt;
+    cursor: pointer;
+}
+.vaccine-card p{
+    display: block;
+    margin: 5pt;
+}
+.vaccineName, .makerName{
+    font-weight: bold;
+}
+
+#search-vaccines-wrapper{
+    font-size: large;
+    font-weight: bold;
+    width: 35%;
+    height: fit-content;
+    margin: auto auto;
+}
+#search-vaccines-wrapper *{
+    display: block;
+    width: 100%;
+    margin: 10pt;
+}
+#vaccines-wrapper{
+    width: 40%;
+    margin: auto auto;
+}
+#vaccine-search-form *{
+    height: 20pt;
+    font-size: large;
+}

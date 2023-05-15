@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-@RequestMapping(name = "/news")
+@RequestMapping(value = "/news")
 public class NewsController {
 
     public static final String NEWS_KEY = "news";
 
-//    @Autowired
-//    private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
     private String bURL;
 
 //    @Autowired
@@ -44,11 +44,11 @@ public class NewsController {
         return;
 
     }
-    @PostMapping(name = "")
+    @PostMapping(value = "/publish")
     public void postNews(@RequestBody CreateNewsDTO newsDTO, HttpServletResponse response){
 
     }
-    @PostMapping(name = "/reports")
+    @PostMapping(value = "/report")
     public void postVirusReport(@RequestBody CreateVirusReportDTO virusReportDTO, HttpServletResponse response){
 
     }

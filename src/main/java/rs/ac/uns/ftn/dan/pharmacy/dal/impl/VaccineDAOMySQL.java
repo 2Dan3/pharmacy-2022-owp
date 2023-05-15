@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.dan.pharmacy.dal.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import rs.ac.uns.ftn.dan.pharmacy.dal.ManufacturerDAO;
 import rs.ac.uns.ftn.dan.pharmacy.dal.VaccineDAO;
 import rs.ac.uns.ftn.dan.pharmacy.model.dto.VaccineFilterDTO;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class VaccineDAOMySQL implements VaccineDAO {
 
     @Autowired
@@ -49,7 +51,7 @@ public class VaccineDAOMySQL implements VaccineDAO {
         StringBuffer whereCondition = new StringBuffer(" WHERE v.manufacturer_id = m.id ");
         boolean imaArgumenata = false;
 
-        if(!vaccineFilter.getVaccineName().isBlank()) {
+        if(vaccineFilter.getVaccineName() != null && !vaccineFilter.getVaccineName().isBlank()) {
             String vaccineName = "%" + vaccineFilter.getVaccineName() + "%";
             if(imaArgumenata)
                 whereCondition.append(" AND ");
@@ -58,7 +60,7 @@ public class VaccineDAOMySQL implements VaccineDAO {
             args.add(vaccineName);
         }
 
-        if(!vaccineFilter.getMakerName().isBlank()) {
+        if(vaccineFilter.getMakerName() != null && !vaccineFilter.getMakerName().isBlank()) {
             String makerName = "%" + vaccineFilter.getMakerName() + "%";
             if(imaArgumenata)
                 whereCondition.append(" AND ");
@@ -67,7 +69,7 @@ public class VaccineDAOMySQL implements VaccineDAO {
             args.add(makerName);
         }
 
-        if(!vaccineFilter.getCountry().isBlank()) {
+        if(vaccineFilter.getCountry() != null && !vaccineFilter.getCountry().isBlank()) {
             String country = "%" + vaccineFilter.getCountry() + "%";
             if(imaArgumenata)
                 whereCondition.append(" AND ");
@@ -100,6 +102,5 @@ public class VaccineDAOMySQL implements VaccineDAO {
         System.out.println(query);
 
         return jdbcTemplate.query(query, args.toArray(), new VaccineRowMapper());
-    }
     }
 }

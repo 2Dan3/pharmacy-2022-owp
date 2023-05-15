@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import rs.ac.uns.ftn.dan.pharmacy.dal.ManufacturerDAO;
 import rs.ac.uns.ftn.dan.pharmacy.model.entity.Manufacturer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Repository
 public class ManufacturerDAOMySQL implements ManufacturerDAO {
 
     @Autowired

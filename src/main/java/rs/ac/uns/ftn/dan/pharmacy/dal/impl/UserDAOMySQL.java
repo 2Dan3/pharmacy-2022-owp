@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import rs.ac.uns.ftn.dan.pharmacy.dal.UserDAO;
 import rs.ac.uns.ftn.dan.pharmacy.model.entity.User;
 
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-@Primary
+@Repository
 public class UserDAOMySQL implements UserDAO {
 
     @Autowired
